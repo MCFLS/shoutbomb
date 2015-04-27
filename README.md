@@ -16,15 +16,22 @@ Set up a connection profile in WINSCP to connect to Shoutbomb
 
 Record both profile names. You will need these to alter the SQL and batch files.
 
-Edit file 'boopsie.sql'
+EDIT .SQL FILES [holds.sql, renew.sql, overdue.sql]
 
-Replace -file parameter with the location you where you want to store the file created. I remove this file prior to creating the new one each time the batch file is run.
-Edit file 'boopsie.bat'
+For all three queries: replace -file parameter with the location you where you want to store the file created. I move each file to an archive after sending to Shoutbomb in case errors occur and I need to resend.
 
-Change profile name used by SQL Workbench /J from "-profile=CountyCat" to "-profile=[your SQL Workbench profile name]"
+overdue.sql: Change the numbers used in the WHERE clause to reflect how often you want to send overdue reminders.  We use 1, 14 and 28 days after the due date.
+
+renew.sql: Change the number 3 to indicate how many days in advance of the due date you want to notify patrons of items coming due.  We set this to three to match our courtesy notices.
+
+EDIT FILE RUNSHOUTBOMB.BAT
+
+Change profile name used by SQL Workbench /J from "-profile=CountyCat" to "-profile=[your SQL Workbench profile name]" and change the location of the SQL files to match your location
 
 Change profile name used by WINSCP from "open boopsie" to "open [your WINSCP profile name]"
 
-Save both files boopsie.bat and boopsie.sql
+Alter the last three lines to indicate where you want to save your archived files.
 
-Run boopsie.bat to execute the query and send file to Boopsie FTP server
+Save all files you've edited.
+
+Run runshoutbomb.bat to execute the query and send file to Boopsie FTP server
