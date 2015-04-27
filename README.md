@@ -1,6 +1,6 @@
 #Sending data to Shoutbomb from Sierra using SQL Workbench/J and WinSCP
 
-Both SQL Workbench /J and WINSCP offer a command line interface which makes it easy to work with both applications to send the file to Boopsie using a Windows batch file. Please note I only export bib record number, title, author, publisher, year, format and ISBN to Boopsie, NOT the full record. I also automatically compress the file with 7zip per Boopsie's instructions
+Both SQL Workbench /J and WINSCP offer a command line interface which makes it easy to work with both applications to send the file to Shoutbomb using a Windows batch file. I use separate SQL files for holds, renewals and overdues which allows me to send them separately at different times if necessary.
 
 DOWNLOAD APPLICATIONS
 
@@ -8,13 +8,11 @@ Download SQL Workbench /J to your computer: http://www.sql-workbench.net/downloa
 
 Download WINSCP FTP client: http://winscp.net/eng/download.php
 
-Download 7zip compression software: http://www.7-zip.org/download.html
-
 SET UP PROFILES FOR APPLICATIONS
 
 Set up a connection profile in SQL Workbench /J to connect to your Sierra SQL instance. Make sure a connection can be made to your database. My connection info is attached as separate images under the ISSUES tab (main profile connection and extended properties window).
 
-Set up a connection profile in WINSCP to connect to Boopsie.
+Set up a connection profile in WINSCP to connect to Shoutbomb
 
 Record both profile names. You will need these to alter the SQL and batch files.
 
