@@ -12,7 +12,7 @@ SET UP PROFILES FOR APPLICATIONS
 
 Set up a connection profile in SQL Workbench /J to connect to your Sierra SQL instance. Make sure a connection can be made to your database. My connection info is attached as separate images under the ISSUES tab (main profile connection and extended properties window).
 
-Set up a connection profile in WINSCP to connect to Shoutbomb
+Set up a connection profile in WINSCP to connect to Shoutbomb.  Make sure you use the TLS option.
 
 Record both profile names. You will need these to alter the SQL and batch files.
 
@@ -34,4 +34,4 @@ Alter the last three lines to indicate where you want to save your archived file
 
 Save all files you've edited.
 
-Run runshoutbomb.bat to execute the query and send file to Boopsie FTP server
+Run runshoutbomb.bat to execute the query and send file to Shoutbomb FTP server
