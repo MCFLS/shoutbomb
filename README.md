@@ -1,5 +1,7 @@
 #Sending data to Shoutbomb from Sierra using SQL Workbench/J and WinSCP
 
+05/29/15: Updated sql scripts to use SQL Workbench /J build 117+
+
 Both SQL Workbench /J and WINSCP offer a command line interface which makes it easy to work with both applications to send the file to Shoutbomb using a Windows batch file. I use separate SQL files for holds, renewals and overdues which allows me to send them separately at different times if necessary.
 
 DOWNLOAD APPLICATIONS
