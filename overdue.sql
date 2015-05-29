@@ -2,21 +2,22 @@ WBVardef today=@"select to_char(current_date,'mmddyyyy')";
 WBExport -type=text
                  -file='c:/shoutbomb/Overdue/overdue$[today].txt'
                  -delimiter='|'
-                 -quoteAlways=true
+                 -quotechar='"'
+                 -quoteCharEscaping=escape
                  -lineEnding=crlf
                  -encoding=utf8;
                  
 SELECT
-     'p' || rmp.record_num || 'a'                                 AS patron_no,
-     replace(ib.field_content,' ','')                             AS item_barcode,
-     s.content                                             				AS title,
+     'p' || rmp.record_num || 'a'                                   AS patron_no,
+     replace(ib.field_content,' ','')                               AS item_barcode,
+     trim(regexp_replace(s.content, '(:|/|\.|\||\")', '', 'g'))     AS title,
      to_char(c.due_gmt,'MM-DD-YYYY')                             	AS due_date,
-     'i' || rmi.record_num || 'a'                                 AS item_no,
-     round(p.owed_amt,2)                                     			AS money_owed,
-     c.loanrule_code_num                                     			AS loan_rule,
-     nullif (count(ih.id),0)                                      AS item_holds,     
-     nullif (count(bh.id),0)                                      AS bib_holds,
-     c.renewal_count                                         			AS renewals,
+     'i' || rmi.record_num || 'a'                                   AS item_no,
+     round(p.owed_amt,2)                                     	AS money_owed,
+     c.loanrule_code_num                                     	AS loan_rule,
+     nullif (count(ih.id),0)                                        AS item_holds,     
+     nullif (count(bh.id),0)                                        AS bib_holds,
+     c.renewal_count                                         	AS renewals,
      'b' || rmb.record_num || 'a'                                	AS bib_no
      
          
