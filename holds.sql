@@ -2,8 +2,8 @@ WBVardef today=@"select to_char(current_date,'mmddyyyy')";
 WBExport -type=text
                  -file='c:/shoutbomb/holds/holds$[today].txt'
                  -delimiter='|'
-	-quotechar='"'
-	-quoteCharEscaping=escape
+		 -quotechar='"'
+		 -quoteCharEscaping=escape
                  -lineEnding=crlf
                  -encoding=utf8;
 
