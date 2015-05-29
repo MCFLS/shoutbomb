@@ -2,12 +2,13 @@ WBVardef today=@"select to_char(current_date,'mmddyyyy')";
 WBExport -type=text
                  -file='c:/shoutbomb/holds/holds$[today].txt'
                  -delimiter='|'
-                 -quoteAlways=true
+	-quotechar='"'
+	-quoteCharEscaping=escape
                  -lineEnding=crlf
                  -encoding=utf8;
 
 SELECT
-    TRIM (TRAILING '/' from s.content) AS title,
+    trim(regexp_replace(s.content, '(:|/|\.|\||\")', '', 'g')) AS title,
     to_char(rmi.record_last_updated_gmt,'MM-DD-YYYY') AS last_update, 
     'i' || rmi.record_num || 'a' AS item_no,
     'p' || rmp.record_num || 'a' AS patron_no, 
