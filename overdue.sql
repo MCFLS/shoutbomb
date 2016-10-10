@@ -46,9 +46,8 @@ SELECT
        ON ( rmb.id = b.id AND rmb.record_type_code = 'b')
        
   WHERE
-    (current_date - c.due_gmt::date) = 1 OR
-    (current_date - c.due_gmt::date) = 14 OR
-    (current_date - c.due_gmt::date) = 28
+
+    (current_date - c.due_gmt::date) <31
 
   GROUP BY 1,2,3,4,5,6,7,10,11
 
