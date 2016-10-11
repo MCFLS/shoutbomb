@@ -47,7 +47,7 @@ SELECT
        
   WHERE
 
-    (current_date - c.due_gmt::date) <31
+    (current_date - c.due_gmt::date) >= 1 AND (current_date - c.due_gmt::date) < 31
 
   GROUP BY 1,2,3,4,5,6,7,10,11
 
