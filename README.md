@@ -22,7 +22,7 @@ EDIT .SQL FILES [holds.sql, renew.sql, overdue.sql]
 
 For all three queries: replace -file parameter with the location you where you want to store the file created. I move each file to an archive after sending to Shoutbomb in case errors occur and I need to resend.
 
-overdue.sql: Change the numbers used in the WHERE clause to reflect how often you want to send overdue reminders.  We use 1, 14 and 28 days after the due date.
+overdue.sql: Change the numbers used in the WHERE clause to reflect how often you want to send overdue reminders.  We use a range between 1 and 30 days overdue.
 
 renew.sql: Change the number 3 to indicate how many days in advance of the due date you want to notify patrons of items coming due.  We set this to three to match our courtesy notices.
 
