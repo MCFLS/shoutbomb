@@ -2,23 +2,23 @@ WBVardef today=@"select to_char(current_date,'mmddyyyy')";
 WBExport -type=text
                  -file='c:/shoutbomb/Overdue/overdue$[today].txt'
                  -delimiter='|'
-                 -quotechar='"'
+		             -quotechar='"'
                  -quoteCharEscaping=escape
                  -lineEnding=crlf
-                 -encoding=utf8;
+                 -encoding='ISO-8859-1';
                  
 SELECT
-     'p' || rmp.record_num || 'a'                                   AS patron_no,
-     replace(ib.field_content,' ','')                               AS item_barcode,
-     trim(regexp_replace(s.content, '(:|/|\.|\||\")', '', 'g'))     AS title,
-     to_char(c.due_gmt,'MM-DD-YYYY')                                AS due_date,
-     'i' || rmi.record_num || 'a'                                   AS item_no,
-     round(p.owed_amt,2)                                            AS money_owed,
-     c.loanrule_code_num                                            AS loan_rule,
-     nullif (count(ih.id),0)                                        AS item_holds,     
-     nullif (count(bh.id),0)                                        AS bib_holds,
-     c.renewal_count                                                AS renewals,
-     'b' || rmb.record_num || 'a'                                   AS bib_no
+     'p' || rmp.record_num || 'a'                                 AS patron_no,
+     replace(ib.field_content,' ','')                             AS item_barcode,
+     trim(regexp_replace(s.content, '(:|/|\.|\||\")', '', 'g'))	  AS title,
+     to_char(c.due_gmt,'MM-DD-YYYY')                              AS due_date,
+     'i' || rmi.record_num || 'a'                                 AS item_no,
+     round(p.owed_amt,2)                                     	  AS money_owed,
+     c.loanrule_code_num                                     	  AS loan_rule,
+     nullif (count(ih.id),0)                                      AS item_holds,     
+     nullif (count(bh.id),0)                                      AS bib_holds,
+     c.renewal_count                                         	  AS renewals,
+     'b' || rmb.record_num || 'a'                                 AS bib_no
      
          
   FROM sierra_view.checkout AS c
@@ -46,7 +46,7 @@ SELECT
        ON ( rmb.id = b.id AND rmb.record_type_code = 'b')
        
   WHERE
-
+  
     (current_date - c.due_gmt::date) >= 1 AND (current_date - c.due_gmt::date) < 31
 
   GROUP BY 1,2,3,4,5,6,7,10,11
