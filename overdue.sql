@@ -3,7 +3,7 @@ WBExport -type=text
                  -file='c:/shoutbomb/Overdue/overdue$[today].txt'
                  -delimiter='|'
 		 -quotechar='"'
-                 -quoteCharEscaping=escape
+		 -quoteCharEscaping=escape
                  -lineEnding=crlf
                  -encoding='ISO-8859-1';
                  
@@ -18,9 +18,9 @@ SELECT
      nullif (count(ih.id),0)                                      AS item_holds,     
      nullif (count(bh.id),0)                                      AS bib_holds,
      c.renewal_count                                         	  AS renewals,
-     'b' || rmb.record_num || 'a'                                 AS bib_no
-     
-         
+     'b' || rmb.record_num || 'a'                                 AS bib_no,
+     c.id                                                         AS checkout_id,
+     v.barcode							  AS patron_barcode
   FROM sierra_view.checkout AS c
      RIGHT JOIN sierra_view.patron_record AS p
        ON ( p.id = c.patron_record_id )
@@ -44,12 +44,10 @@ SELECT
        ON (ih.record_id = i.id and ih.status = '0')         
      LEFT JOIN sierra_view.record_metadata as rmb
        ON ( rmb.id = b.id AND rmb.record_type_code = 'b')
-       
+     LEFT JOIN sierra_view.patron_view as v
+       ON (v.id = c.patron_record_id)
   WHERE
-  
     (current_date - c.due_gmt::date) >= 1 AND (current_date - c.due_gmt::date) < 31
-
-  GROUP BY 1,2,3,4,5,6,7,10,11
-
+  GROUP BY 1,2,3,4,5,6,7,10,11,12,13
   ORDER BY
       patron_no;
