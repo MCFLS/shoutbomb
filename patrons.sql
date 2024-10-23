@@ -1,11 +1,11 @@
 WBVardef today=@"Select to_char(current_date,'mmddyyyy')";
 WBExport -type=text
-                 -file='c:/shoutbomb/Text/text$[today].txt'
-                 -delimiter='|'
-				 				 -quotechar='"'
-				 				 -quoteCharEscaping=escape
-                 -lineEnding=crlf
-                 -encoding='ISO-8859-1';                 
+	-file='c:/shoutbomb/Text/text$[today].txt'
+	-delimiter='|'
+	-quotechar='"'
+	-quoteCharEscaping=escape
+	-lineEnding=crlf
+	-encoding='ISO-8859-1';                 
 
 SELECT
     regexp_replace(r.phone_number, '[- \.]', '', 'g'), v.barcode, iii_language_pref_code 
