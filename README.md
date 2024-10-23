@@ -3,9 +3,13 @@
 Both SQL Workbench /J and WINSCP offer a command line interface (CLI) which makes it easy to work with both applications to send the file to Shoutbomb using a Windows batch file. Separate SQL files are used for holds, renewals, and overdues to allow sending them separately at different times if necessary.
 
 REQUIREMENTS:
+<br/>
 SQL Workbench /J: http://www.sql-workbench.net/downloads.html
+<br/>
 WINSCP FTP client: http://winscp.net/eng/download.php
+<br/>
 
+Instructions:<br/>
 A. SET UP PROFILES FOR APPLICATIONS
 1. Set up a connection profile in SQL Workbench /J to connect to your Sierra SQL instance. Test a successful connection can be made to your database before proceeding.
 2. Set up a connection profile in WINSCP to connect to Shoutbomb. Use the TLS option.
