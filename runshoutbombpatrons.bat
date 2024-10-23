@@ -1,5 +1,5 @@
 REM Run the sqlworkbench scripts for text patrons. Scripts also save files.
-java -jar C:\SQLWorkbench\sqlworkbench.jar -script='c:/shoutbomb/scripts/text.sql' -profile=CountyCat
+java -jar C:\SQLWorkbench\sqlworkbench.jar -script='c:/shoutbomb/scripts/patrons.sql' -profile=CountyCat
 REM Run winscp to ftp the files over to Shoutbomb
 winscp.com /command "option batch abort" "option confirm off" "open shoutbomb -certificate=*" "put C:\shoutbomb\Text\*.* /text_patrons/" "exit"
 REM move the ftp'd files over to ftpsent folder
